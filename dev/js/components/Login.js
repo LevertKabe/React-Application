@@ -9,13 +9,11 @@ class Login extends Component{
         password: '',
         profileType: ''
         }
-
-        this.username = this.username.bind(this);
-
   }
-  handleTextChange(event)
+
+  handleTextChange(e)
   {
-    alert('You changed');
+    this.setState({ username: e.target.value});
   }
 
   render(){
@@ -23,13 +21,11 @@ class Login extends Component{
       <div>
         <body>
           <Row>
-                <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange} />
+                <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
                 <Input placeholder="Password" type="Password" label="Password" s={12} value={this.password} onChange={this.handleTextChange}  />
-
           </Row>
           <Button>Sign In</Button>
         </body>
-          
       </div>
     )
   }
