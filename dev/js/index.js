@@ -7,7 +7,12 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import App from './components/App';
+import LoginScreen from './components/App';
+import Login from './components/Login'
+
+// import 'materialize-css'; // It installs the JS asset only
+// import 'materialize-css/dist/css/materialize.min.css';
+
 
 const logger = createLogger();
 const store = createStore(
@@ -17,7 +22,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Login />
     </Provider>,
     document.getElementById('root')
 );
