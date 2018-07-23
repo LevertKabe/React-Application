@@ -1,16 +1,35 @@
-import React from 'react';
-import UserList from '../containers/user-list';
-import UserDetails from '../containers/user-detail';
+import React,{Component} from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Register from './Register';
+import Login from './Login';
+import Home from './Home';
 
 
-const LoginScreen = () => (
-    <div>
-        <h2>User List</h2>
-        <UserList />
-        <hr />
-        <h2>User Details</h2>
-        <UserDetails />
-    </div>
-);
+class App extends Component{
+    constructor(props){
+        super(props)
+          this.state = {
+            username: '',
+            password: '',
+            profileType: ''
+            }
+      }
 
-export default LoginScreen;
+    render(){
+        return(
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to={'/'}>Home</Link></li>
+                        <li><Link to={'/login'}>Login</Link></li>
+                    </ul>
+                    <Switch>
+                        <Route exact path='/' component={Home} />
+                        <Route exact path='/login' component={Login} />
+                    </Switch>
+                </div>
+            </Router>
+        )
+    }
+}
+export default App;

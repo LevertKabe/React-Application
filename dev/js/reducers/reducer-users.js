@@ -7,27 +7,34 @@ export default function () {
     return [
         {
             id: 1,
-            first: "Bucky",
-            last: "Roberts",
-            age: 71,
-            description: "Bucky is a React developer and YouTuber",
-            thumbnail: "http://i.imgur.com/7yUvePI.jpg"
+            username: "Bucky",
+            password: "Roberts",
+            address: "24 Jump Street",
+            category: "Bucky is a React developer and YouTuber",
+            Keywords: "developer ",
+            Resume: "XYX",
+            numYearsExp: "5"
+            
         },
         {
             id: 2,
-            first: "Joby",
-            last: "Wasilenko",
-            age: 27,
-            description: "Joby loves the Packers, cheese, and turtles.",
-            thumbnail: "http://i.imgur.com/52xRlm8.png"
+            username: "Levert",
+            password: "1234",
+            address: "24 Jump Street",
+            category: "YouTuber",
+            Keywords: "youtube ",
+            Resume: "WOW",
+            numYearsExp: "0"
         },
         {
-            id: 3,
-            first: "Madison",
-            last: "Williams",
-            age: 24,
-            description: "Madi likes her dog but it is really annoying.",
-            thumbnail: "http://i.imgur.com/4EMtxHB.png"
+            id: 1,
+            username: "Rick",
+            password: "Rick",
+            address: "2499 Jump Street",
+            category: "developer ",
+            Keywords: "developer ",
+            Resume: "XYX",
+            numYearsExp: "10"
         }
     ]
 }

@@ -7,8 +7,10 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import LoginScreen from './components/App';
-import Login from './components/Login'
+import Login from './components/Login';
+import Register from './components/Register';
+import App from './components/App';
+import Home from './components/Home';
 
 // import 'materialize-css'; // It installs the JS asset only
 // import 'materialize-css/dist/css/materialize.min.css';
@@ -22,7 +24,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Login />
+        <Register />
     </Provider>,
     document.getElementById('root')
 );
