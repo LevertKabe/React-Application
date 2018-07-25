@@ -7,7 +7,7 @@ const knex = require('knex')({
       database : 'jobseeker',
       charset: 'utf8'
     }
- 
+
 });
 
 module.exports = knex;

@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const postgres = require('pg');
-const userRoutes = require('./user');
+const userRoutes = require('./routes/api/user');
 const cons = require('consolidate');
 const dust = require('dustjs-helpers');
 const pg = require('pg');
@@ -12,14 +12,11 @@ const path = require('path');
 const router = express.Router();
 
 app.use('/test', userRoutes);
-//DB connection string 
-var connect = "postgres://JobSeeker:Levert@31localhost/postgresdb"
 
 //Assign Dust Engine to dust Files
 app.engine('dust', cons.dust);
 
 //Set Defaults Ext .dust
-
 app.set('view engine', 'dust');
 app.set('views', __dirname + '/views');
 
@@ -28,14 +25,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Body Parser Middleware
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 postgres.Connection
 
 app.use('/user', userRoutes);
 
-//Handle all requests for user
+//Handle all requests ERRORS 404 and 500
 app.use((req, res, next) =>{
     //Custom message to handle page not found error
     const error = new Error('Not found');
@@ -52,5 +50,4 @@ app.use((error, req, res, next) =>{
         }
     })
 });
-
 module.exports = app;

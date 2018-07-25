@@ -20,51 +20,42 @@ class Register extends Component{
 
   handleTextChange(e)
   {
-    var value = e.target.value;
-
-    this.setState({ username: e.target.value});
-
-    console.log(this.state);
-
+    var value = e.target.placeholder;
+    console.log(value);
     switch(value) {
       case "Username":
-          
+          this.setState({ employeeUsername: e.target.value});
           break;
       case "Password":
-    
+          this.setState({ employeePassword: e.target.value});
           break;
       case "Employee Name":
-  
+          this.setState({ employeeName: e.target.value});
           break;
       case "Employee Address":
-     
+          this.setState({ employeeAddress: e.target.value});
           break;
       case "Category":
-       
+          this.setState({ employeeCategory: e.target.value});
           break;
       case "Keywords":
-       
+          this.setState({ keywords: e.target.value});
           break;
       default:
     }
   }
 
-  postRegisterationDetails()
+  register()
   {
-    const userInfo = {
+    axios.post('http://localhost:8081/user/registerEmployee', 
+    {
       username : this.state.employeeUsername,
       password : this.state.employeePassword,
       name : this.state.employeeName, 
       address : this.state.employeeAddress,
-      category : this.state.employeeCategory
-    };
-    console.log(userInfo)
-
-    axios.get('http://localhost:8081/user/' 
-    + userInfo.employeeUsername + '/' 
-    + userInfo.employeePassword, {
-      
-    })
+      category : this.state.employeeCategory,
+    }
+    )
     .then(function (response) {
       console.log(response);
     })
@@ -78,16 +69,16 @@ class Register extends Component{
         <body>
           <Row>
                 <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange}  />
+                <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
                 <Input placeholder="Employee Name" label="Employee Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="Employee Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange}  />
+                <Input placeholder="Employee Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
                 <Input placeholder="Category" label="Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
                 <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
                 <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
                 <Input placeholder="0" label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
           </Row>
         </body>
-        <Button onClick={this.postRegisterationDetails.bind(this)}>Register</Button>
+        <Button onClick={this.register.bind(this)}>Register</Button>
       </div>
     )
   }
