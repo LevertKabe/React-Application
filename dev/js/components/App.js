@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import {Button, Row, Input, Dropdown, NavItem, trigger, Navbar, NavItem, Icon} from 'react-materialize';
 import Register from './Register';
 import Login from './Login';
 import Home from './Home';
@@ -26,5 +25,4 @@ class App extends Component{
         )
     }
 }
-
 export default App;
