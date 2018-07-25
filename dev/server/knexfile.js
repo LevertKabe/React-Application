@@ -1,18 +1,13 @@
-module.exports ={
-  development: {
+const knex = require('knex')({
     client: 'pg',
     connection: {
       host : '127.0.0.1',
       user : 'Levert',
       password : '',
-      database : 'postgres',
+      database : 'jobseeker',
       charset: 'utf8'
-    },
-    // migrations: {
-    //   directory: __dirname + '/knex/migrations',
-    // },
-    // seeds: {
-    //   directory: __dirname + '/knex/seeds'
-    // }
-  }
-}
+    }
+ 
+});
+
+module.exports = knex;

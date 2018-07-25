@@ -1,17 +1,13 @@
 const express  = require('express');
 const router = express.Router();
 var pg = require('pg');
-const knex = require('./knexMiddle.js')
+const knex = require('./knexfile.js');
 
-var options = { 
-    host: 'localhost',
-    port: 5432,
-    database: 'postgres',
-    user: 'Levert',
-    password: ''
-
-  }; 
-
+router.get('/test', function(req,res){
+    knex.select().from('employee').then(function(employeeName){
+        res.send(employeeName);
+    })
+});
 
 var connectionString = process.env.DATABASE_URL || 'postgres://JobSeeker:localhost:5432';
 
@@ -71,5 +67,4 @@ router.get('/:name', function(req, res) {
     // });
 
 });
-
 module.exports = router;

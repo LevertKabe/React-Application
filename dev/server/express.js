@@ -8,6 +8,10 @@ const cons = require('consolidate');
 const dust = require('dustjs-helpers');
 const pg = require('pg');
 const path = require('path');
+
+const router = express.Router();
+
+app.use('/test', userRoutes);
 //DB connection string 
 var connect = "postgres://JobSeeker:Levert@31localhost/postgresdb"
 
