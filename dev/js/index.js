@@ -7,24 +7,23 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import allReducers from './reducers';
-import Login from './components/Login';
-import Register from './components/Register';
+import {composeWithDevTools} from 'redux-devtools-extension'
 import App from './components/App';
-import Home from './components/Home';
-
-// import 'materialize-css'; // It installs the JS asset only
-// import 'materialize-css/dist/css/materialize.min.css';
+import BrowserRouter from 'react-router';
 
 
 const logger = createLogger();
 const store = createStore(
     allReducers,
-    applyMiddleware(thunk, promise, logger)
+    composeWithDevTools(
+        applyMiddleware(thunk, promise, logger)
+    ) 
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+        <Provider store={store}>
+            <App />
+        </Provider>
+    ,
     document.getElementById('root')
 );

@@ -1,15 +1,14 @@
+//Combine all reducers into ONE object to save in STORE
 import {combineReducers} from 'redux';
-import UserReducer from './reducer-users';
-import ActiveUserReducer from './reducer-active-user';
 
-/*
- * We combine all reducers into a single object before updated data is dispatched (sent) to store
- * Your entire applications state (store) is just whatever gets returned from all your reducers
- * */
+//Imported Reducers
+import user from './user';
+import auth from './auth';
 
-const allReducers = combineReducers({
-    users: UserReducer,
-    activeUser: ActiveUserReducer
+//Combine all the reducers to save into the STORE
+//This could be refered to as a the 'main' reducers
+
+//Enable reducers to be used by store
+export default combineReducers({
+    user, auth
 });
-
-export default allReducers

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import {Button, Row, Input, Dropdown, NavItem, trigger, Navbar, Icon} from 'react-materialize';
+import {Button, Row, Input, Dropdown, NavItem,Collection, CollectionItem} from 'react-materialize';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import axios from 'axios';
+import { userSignupRequest } from '../actions/signupActions';
 
 class Register extends Component{
   constructor(props){
@@ -15,7 +15,9 @@ class Register extends Component{
         keywords: '',
         employeeResume:'',
         numOfYearsExperience:'',
-        validRegisteration: false}
+        validRegisteration: false,
+        displayMenu: false,
+        selectedFile: null,}
   }
 
   handleTextChange(e)
@@ -45,41 +47,41 @@ class Register extends Component{
     }
   }
 
-  register()
+  handleSubmit(e)
   {
-    axios.post('http://localhost:8081/user/registerEmployee', 
-    {
-      username : this.state.employeeUsername,
-      password : this.state.employeePassword,
-      name : this.state.employeeName, 
-      address : this.state.employeeAddress,
-      category : this.state.employeeCategory,
-    }
-    )
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    userSignupRequest(this.state);
   }
+
+  fileSelectedHandler(event){
+      this.setState({
+        selectedFile : event.target.files[0],
+      })
+  }
+
+  fileUploadHandler() {
+
+  }
+
   render(){
     return(
-      <div>
-        <body>
-          <Row>
-                <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
-                <Input placeholder="Employee Name" label="Employee Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="Employee Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
-                <Input placeholder="Category" label="Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
-                <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
-                <Input placeholder="0" label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
-          </Row>
-        </body>
-        <Button onClick={this.register.bind(this)}>Register</Button>
-      </div>
+      <Router>
+        <div>
+            <Row>
+                  <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Employee Name" label="Employee Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Employee Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Category" label="Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="0" label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
+                  
+            </Row>
+          <input type="file" onChange= {this.fileSelectedHandler}/>
+          <button onClick={this.handleSubmit.bind(this)}>Upload file</button>
+          <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
+        </div>
+      </Router>
     )
   }
 }
