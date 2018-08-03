@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import {Button, Row, Input, Dropdown, NavItem,Collection, CollectionItem} from 'react-materialize';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { userSignupRequest } from '../actions/signupActions';
+import { userSignupRequest } from '../../actions/jobseeker/signupActions';
+require('bootstrap');
 
 class Register extends Component{
   constructor(props){
@@ -13,7 +14,6 @@ class Register extends Component{
         employeeAddress:'',
         employeeCategory:'',
         keywords: '',
-        employeeResume:'',
         numOfYearsExperience:'',
         validRegisteration: false,
         displayMenu: false,
@@ -43,6 +43,13 @@ class Register extends Component{
       case "Keywords":
           this.setState({ keywords: e.target.value});
           break;
+      case "ExpYears":
+        if(isNaN(e.target.value)){
+        }
+        else{
+          this.setState({ numOfYearsExperience: e.target.value});
+        }
+      break;
       default:
     }
   }
@@ -52,36 +59,42 @@ class Register extends Component{
     userSignupRequest(this.state);
   }
 
-  fileSelectedHandler(event){
-      this.setState({
-        selectedFile : event.target.files[0],
-      })
-  }
-
-  fileUploadHandler() {
-
+  uploadFile(e){
+    let files = e.target.files;
+    console.log(files[0].name.split(".").pop());
+    if(files[0].name.split(".").pop() == "doc"){
+      let reader = new FileReader();
+      reader.readAsDataURL(files[0]);
+  
+      reader.onload=(e) =>{
+        this.state.selectedFile = e.target.result;
+          console.warn("img data ", this.state.selectedFile)
+      }
+    }
+    else{
+      alert("Please ensure you have uploaded a word document file as your resume");
+    }
+ 
   }
 
   render(){
     return(
-      <Router>
-        <div>
+        <div class="btn-group">
             <Row>
                   <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
                   <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
-                  <Input placeholder="Employee Name" label="Employee Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
-                  <Input placeholder="Employee Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Company Name" label="Company Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Company Address" label="Company Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
                   <Input placeholder="Category" label="Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
                   <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
                   <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
-                  <Input placeholder="0" label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="ExpYears" type="Numbers" s={3} label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
                   
             </Row>
-          <input type="file" onChange= {this.fileSelectedHandler}/>
-          <button onClick={this.handleSubmit.bind(this)}>Upload file</button>
-          <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
+            <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
+            <br/>
+           <input type="file" name= "file" onChange={(e)=> this.uploadFile(e)}/>   
         </div>
-      </Router>
     )
   }
 }

@@ -1,3 +1,4 @@
+//Setup database connection with help of knex
 const knex = require('knex')({
     client: 'pg',
     connection: {
@@ -7,7 +8,12 @@ const knex = require('knex')({
       database : 'jobseeker',
       charset: 'utf8'
     }
+});
 
+var bookshelf = require('bookshelf')(knex);
+
+var User = bookshelf.Model.extend({
+  tableName: 'mass'
 });
 
 module.exports = knex;

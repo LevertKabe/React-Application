@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
-import {Button, Row, Input, Dropdown, NavItem,Collection, CollectionItem} from 'react-materialize';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import { userSignupRequest } from '../actions/signupActions';
+import {Button, Row, Input} from 'react-materialize';
+import { companySignupRequest } from '../../actions/company/signupActions';
 
 class Register extends Component{
   constructor(props){
@@ -11,8 +10,7 @@ class Register extends Component{
         companyPassword: '',
         companyAddress:'',
         companyCategory:'',
-        validRegisteration: false,
-        selectedImage: null,}
+        image:''}
   }
 
   handleTextChange(e)
@@ -38,34 +36,35 @@ class Register extends Component{
 
   handleSubmit(e)
   {
-    userSignupRequest(this.state);
+    companySignupRequest(this.state);
   }
 
-  fileSelectedHandler(event){
-      this.setState({
-        selectedFile : event.target.files[0],
-      })
-  }
+  uploadImage(e){
+    let files = e.target.files;
+    let reader = new FileReader();
+    reader.readAsDataURL(files[0]);
 
-  fileUploadHandler() {
-
+    reader.onload=(e) =>{
+      this.setState({ image : e.target.result });
+        console.warn("img data ", this.state.image)
+    }
   }
 
   render(){
     return(
-      <Router>
-        <div>
+      <div>
             <Row>
-                  <Input placeholder="CompanyName" label="Company Name" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
-                  <Input placeholder="Password" type="Company Access Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
-                  <Input placeholder="CompanyAddress" label="Company Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
-                  <Input placeholder="CompanyCategory" label="Company Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Username" label="Username" s={12} value={this.username} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Password" type="Password" label="Password" s={15} value={this.password} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Employer Name" label="Employee Name" s={12} value={this.name} onChange={this.handleTextChange.bind(this)} />
+                  <Input placeholder="Employer Address" label="Employee Address" s={12} value={this.address} onChange={this.handleTextChange.bind(this)}  />
+                  <Input placeholder="Company Category" label="Company Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />
             </Row>
-          <input type="file" onChange= {this.fileSelectedHandler}/>
-          <button onClick={this.handleSubmit.bind(this)}>Upload Company Logo</button>
+          <input type="file" onChange= {(e)=> this.uploadImage(e)}/>
+          <br/>
+          <img id="target" src={this.state.image}/>
           <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
         </div>
-      </Router>
     )
   }
 }

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const postgres = require('pg');
 const userRoutes = require('./routes/api/user');
 const cons = require('consolidate');
-const dust = require('dustjs-helpers');
+const dust = require('dustjs-helpers/lib/dust-helpers');
 const pg = require('pg');
 const path = require('path');
 
