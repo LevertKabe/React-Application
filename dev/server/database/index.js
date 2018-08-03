@@ -10,10 +10,4 @@ const knex = require('knex')({
     }
 });
 
-var bookshelf = require('bookshelf')(knex);
-
-var User = bookshelf.Model.extend({
-  tableName: 'mass'
-});
-
 module.exports = knex;

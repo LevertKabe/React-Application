@@ -5,15 +5,14 @@ const knex = require('../../database');
 
 //API to return all 
 router.get('/getAllCompanies', function(req,res){
-    knex.select().from('employee').then(function(employeeName){
-        res.send(employeeName);
+    knex.select().from('company').then(function(data){
+        res.send(data);
     })
 });
 
 //API to register a company
 router.post('/registerCompany', (req, res, next) =>{
     const name = req.params.name
-    console.log(req.body);
     knex.insert(req.body).returning('*').into('employee').then(function(data){
         res.send(data);
     })
@@ -21,9 +20,8 @@ router.post('/registerCompany', (req, res, next) =>{
 
 
 //API to login a company using company name
-router.get('/loginCompanies/:username', (req, res, next) =>{
+router.get('/loginCompany/:username', (req, res, next) =>{
     const username = req.params.username;
-    
     knex('employee').where('username',username ).then(function(data){
         res.send(data);
     })
@@ -49,8 +47,8 @@ router.post('/addJob', (req, res, next) =>{
 
 router.get('/getJobForCompany/:company_name', function(req,res){
     const company_name = req.params.company_name;
-    knex.select().from('job').where('company_name', 'LIKE', '%' + company_name + '%').then(function(companyJobs){
-        res.send(companyJobs);
+    knex.select().from('job').where('company_name', 'LIKE', '%' + company_name + '%').then(function(data){
+        res.send(data);
     })
 });
 

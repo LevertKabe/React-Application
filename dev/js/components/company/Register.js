@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Button, Row, Input} from 'react-materialize';
 import { companySignupRequest } from '../../actions/company/signupActions';
+import '../../../scss/App.scss';
 
 class Register extends Component{
   constructor(props){

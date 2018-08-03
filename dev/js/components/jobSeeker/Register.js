@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {Button, Row, Input, Dropdown, NavItem,Collection, CollectionItem} from 'react-materialize';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import { userSignupRequest } from '../../actions/jobseeker/signupActions';
-require('bootstrap');
+import '../../../scss/App.scss';
+
 
 class Register extends Component{
   constructor(props){
@@ -89,11 +90,12 @@ class Register extends Component{
                   <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
                   <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
                   <Input placeholder="ExpYears" type="Numbers" s={3} label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
-                  
             </Row>
+
+            <input type="file" name= "file" onChange={(e)=> this.uploadFile(e)}/>   
             <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
             <br/>
-           <input type="file" name= "file" onChange={(e)=> this.uploadFile(e)}/>   
+           
         </div>
     )
   }

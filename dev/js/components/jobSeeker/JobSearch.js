@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import {Button, Row, Input, Table} from 'react-materialize';
+import '../../scss/style.scss';
 
 var resp = {};
 class JobSearch extends Component{

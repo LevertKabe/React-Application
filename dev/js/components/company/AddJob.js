@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import {Button, Row, Input, Table} from 'react-materialize';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import { companySignupRequest } from '../../actions/company/signupActions';
-require('bootstrap');
+import '../../../scss/App.scss';
 
+var resp = {};
 class AddJob extends Component{
   constructor(props){
     super(props)
@@ -38,6 +38,19 @@ class AddJob extends Component{
   handleSubmit(e)
   {
     companySignupRequest(this.state);
+    
+    
+      axios.get('http://localhost:8081/user/getJobForCompany', 
+      {})
+        .then(function (response) {
+          resp = response.data;
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+        this.setState({employeeDetails: resp})
+        console.log(this.state.employeeDetails);
+      
   }
 
   fileSelectedHandler(event){

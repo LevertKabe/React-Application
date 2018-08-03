@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import {Button, Input, Row, Table} from 'react-materialize';
+import {Button, Input, Row} from 'react-materialize';
 import '../../../scss/App.scss';
 
 var resp = {};
@@ -50,7 +50,7 @@ class ViewJobSeeker extends Component{
             <Button onClick={this.handleSubmit.bind(this)}>Search</Button>
             <Button onClick={this.viewAllEmployees}>View All Employees</Button>
 
-            <Table style= {{color :"black", font: "14px" }}>
+            <table style= {{color :"black", font: "14px" }}>
                 <thead>
                     <tr>
                     <th data-field="id">Employee Name</th>
@@ -78,7 +78,7 @@ class ViewJobSeeker extends Component{
                     )
                 })}
                 </tbody>
-            </Table>
+            </table>
             </Row>
         </div>
     )

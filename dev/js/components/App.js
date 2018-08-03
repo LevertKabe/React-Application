@@ -17,7 +17,7 @@ class CompanyTab extends Component
             <Router>
                 <div className="nav-wrapper">
                     <ul>
-                        <li ><Link to={'/'}>Home</Link></li>
+                        <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/register'}>Register</Link></li>
                         <li><Link to={'/login'}>Login</Link></li>
                         <li><Link to={'/viewjobseeker'}>View Job Applications</Link></li>
