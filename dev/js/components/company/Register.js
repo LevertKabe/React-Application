@@ -1,3 +1,5 @@
+//Component to register a company 
+
 import React,{Component} from 'react';
 import {Button, Row, Input} from 'react-materialize';
 import { companySignupRequest } from '../../actions/company/signupActions';

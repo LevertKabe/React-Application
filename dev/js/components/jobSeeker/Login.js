@@ -1,3 +1,5 @@
+//Componenet for login page for a job seeker
+
 import React,{Component} from 'react';
 import {Button, Row, Input, Dropdown, NavItem, trigger} from 'react-materialize'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';

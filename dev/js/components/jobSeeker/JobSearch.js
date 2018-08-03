@@ -1,7 +1,9 @@
+//Componenet for job searching page
+//Imported axios to make GET,POST requests
 import React,{Component} from 'react';
 import axios from 'axios';
 import {Button, Row, Input, Table} from 'react-materialize';
-import '../../scss/style.scss';
+
 
 var resp = {};
 class JobSearch extends Component{

@@ -1,7 +1,10 @@
+//Component for company to add a job required
+
 import React,{Component} from 'react';
+import axios from 'axios';
 import {Button, Row, Input, Table} from 'react-materialize';
-import { companySignupRequest } from '../../actions/company/signupActions';
-import '../../../scss/App.scss';
+import { addJob } from '../../actions/company/addJob';
+import '../../../scss/App.scss'
 
 var resp = {};
 class AddJob extends Component{
@@ -11,7 +14,10 @@ class AddJob extends Component{
         jobTitle: '',
         experienceRequired: '',
         keywords:'',
-        category:'',}
+        job_description:'',
+        category:'',
+        company_name:'',
+       joblist:[]}
   }
 
   handleTextChange(e)
@@ -25,6 +31,9 @@ class AddJob extends Component{
       case "ExperienceRequired":
           this.setState({ experienceRequired: e.target.value});
           break;
+      case "Pleaseprovidedetailsofjob":
+          this.setState({ job_description: e.target.value});
+      break;
       case "Keywords":
           this.setState({ keywords: e.target.value});
           break;
@@ -37,9 +46,9 @@ class AddJob extends Component{
 
   handleSubmit(e)
   {
-    companySignupRequest(this.state);
-    
-    
+    this.setState({ company_name:localStorage.getItem("User")});
+    addJob(this.state);
+
       axios.get('http://localhost:8081/user/getJobForCompany', 
       {})
         .then(function (response) {

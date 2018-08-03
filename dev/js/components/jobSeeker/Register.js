@@ -1,3 +1,6 @@
+//Componenet register job seeker page
+//Imported axios to make GET,POST requests
+
 import React,{Component} from 'react';
 import {Button, Row, Input, Dropdown, NavItem,Collection, CollectionItem} from 'react-materialize';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';

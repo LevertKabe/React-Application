@@ -1,6 +1,7 @@
+//Componenet for drop down list
+
 import React from 'react';
 import '../../scss/App.scss';
-
 
 class DropdownList extends React.Component {
 constructor(){
