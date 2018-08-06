@@ -46,22 +46,32 @@ class AddJob extends Component{
     }
   }
 
+  //Button to view all job seekers
   handleSubmit(e)
   {
-    this.setState({ company_name:localStorage.getItem("User")});
-    addJob(this.state);
-
-      axios.get('http://localhost:8081/user/getJobForCompany', 
-      {})
-        .then(function (response) {
-          resp = response.data;
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-        this.setState({employeeDetails: resp})
-        console.log(this.state.employeeDetails);
-      
+    //Validate if user has logged in before using any services
+    if (localStorage.getItem("User") == "")
+    {
+        alert("Please login(company) before you add a job post");
+    }
+    else
+    {
+      this.setState({ company_name:localStorage.getItem("User")});
+      addJob(this.state);
+  
+        axios.get('http://localhost:8081/user/getJobForCompany', 
+        {})
+          .then(function (response) {
+            resp = response.data;
+          })
+          .catch(function (error) {
+          console.log(error);
+          });
+          this.setState({employeeDetails: resp})
+          console.log(this.state.employeeDetails);
+        
+    }
+    
   }
 
   fileSelectedHandler(event){

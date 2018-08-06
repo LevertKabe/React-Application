@@ -17,7 +17,14 @@ class ViewJobSeeker extends Component{
   }
 
   viewAllEmployees(){
-    axios.get('http://localhost:8081/user/getAllEmployees', 
+
+    if (localStorage.getItem("User") == "")
+    {
+        alert("Please login as company before you view all job seeker");
+    }
+    else
+    {
+        axios.get('http://localhost:8081/user/getAllEmployees', 
         {})
         .then(function (response) {
             resp = response.data;
@@ -27,6 +34,8 @@ class ViewJobSeeker extends Component{
         });
         this.setState({employeeDetails: resp})
         console.log(this.state.employeeDetails);
+    }
+    
     }
 
     handleTextChange(e){

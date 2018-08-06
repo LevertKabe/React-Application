@@ -26,7 +26,6 @@ export function userLoginRequest(userData){
           else
           {
             alert("Successfully sign-in");
-            //setCurrentUser(userData);
             localStorage.setItem("User", userData.username);
             
           }
