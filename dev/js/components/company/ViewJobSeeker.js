@@ -57,9 +57,7 @@ class ViewJobSeeker extends Component{
     return(
         <div>
         <Row>
-            <Input placeholder="SearchEmployee" label="Search Employee" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}/>
-            <Button onClick={this.handleSubmit.bind(this)}>Search</Button>
-            <Button onClick={this.viewAllEmployees}>View All Employees</Button>
+            
 
             <table style= {{color :"black", font: "14px" }}>
                 <thead>
@@ -90,6 +88,10 @@ class ViewJobSeeker extends Component{
                 })}
                 </tbody>
             </table>
+
+            <Input placeholder="SearchEmployee" label="Search Employee" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}/>
+            <Button onClick={this.handleSubmit.bind(this)}>Search</Button>
+            <Button onClick={this.viewAllEmployees}>View All Employees</Button>
             </Row>
         </div>
     )

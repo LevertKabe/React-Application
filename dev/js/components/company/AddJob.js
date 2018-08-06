@@ -56,22 +56,8 @@ class AddJob extends Component{
     }
     else
     {
-      this.setState({ company_name:localStorage.getItem("User")});
-      addJob(this.state);
-  
-        axios.get('http://localhost:8081/user/getJobForCompany', 
-        {})
-          .then(function (response) {
-            resp = response.data;
-          })
-          .catch(function (error) {
-          console.log(error);
-          });
-          this.setState({employeeDetails: resp})
-          console.log(this.state.employeeDetails);
-        
+      addJob(this.state)
     }
-    
   }
 
   fileSelectedHandler(event){
@@ -84,8 +70,8 @@ class AddJob extends Component{
       <div>
             <Row>
                   <Input placeholder="Jobtitle" label="Job Title" s={12} value={this.jobTitle} onChange={this.handleTextChange.bind(this)} />
-                  <Input placeholder="ExperienceRequired" label="Experience Required" s={15} value={this.expReq} onChange={this.handleTextChange.bind(this)}/>
-                  <textarea placeholder="Please provide details of job"label="DetailJobDescription" rows="4" cols="50">
+                  <Input placeholder="ExperienceRequired" label="Experience Required(months)" s={15} value={this.expReq} onChange={this.handleTextChange.bind(this)}/>
+                  <textarea placeholder="Pleaseprovidedetailsofjob"label="DetailJobDescription" rows="4"  cols="50" value={this.job_description} onChange={this.handleTextChange.bind(this)}>
                   </textarea>
                   <Input placeholder="Keywords" label="Keywords" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}  />
                   <Input placeholder="Category" label="Category" s={12} value={this.category} onChange={this.handleTextChange.bind(this)} />

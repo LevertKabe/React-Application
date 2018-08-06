@@ -7,9 +7,9 @@ export function addJob(jobData) {
       job_title : jobData.jobTitle,
       job_description : jobData.companyPassword,
       keywords : jobData.keywords,
-      job_description: job.job_description,
+      job_description: jobData.job_description,
       category : jobData.category,
-      companyID : jobData.companyCategory,
+      company_name : localStorage.getItem("User"),
       expreq : jobData.experienceRequired
     }
     )

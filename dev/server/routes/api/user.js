@@ -30,15 +30,25 @@ router.get('/loginEmployee/:username', (req, res, next) =>{
     })
 });
 
+
+
 //API to SEARCH a job based on a category or by certain keyword
 router.get('/searchJob/:keyword', (req, res, next) =>{
     const keywords = req.params.keyword;
     
-    knex('company').where('company_category', 'LIKE', '%' + keywords + '%').then(function(data){
+    knex('job').where('category', 'LIKE', '%' + keywords + '%').then(function(data){
         res.send(data);
     })
 });
 
+
+//API to register a job seeker/potential employee
+router.post('/applyForJob', (req, res, next) =>{
+    const name = req.params.name
+    knex.insert(req.body).returning('*').into('job_seeker_application').then(function(data){
+        res.send(data);
+    })
+});
 
 //=========================================Company APIs=================================
 
