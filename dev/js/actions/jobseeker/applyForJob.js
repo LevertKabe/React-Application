@@ -13,7 +13,7 @@ export function applyForJob(jobData) {
           var o=JSON.parse(res);
           var employeeID = o[0].id;
   
-          axios.post('http://localhost:8081/user/applyJob',
+          axios.post('http://localhost:8081/user/applyForJob',
           {
               job_id: jobData.job_id,
               employee_id: employeeID
