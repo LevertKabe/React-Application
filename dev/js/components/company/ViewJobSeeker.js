@@ -17,25 +17,23 @@ class ViewJobSeeker extends Component{
   }
 
   viewAllEmployees(){
-
-    if (localStorage.getItem("User") == "")
-    {
-        alert("Please login as company before you view all job seeker");
-    }
-    else
-    {
-        axios.get('http://localhost:8081/user/getAllEmployees', 
-        {})
-        .then(function (response) {
-            resp = response.data;
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-        this.setState({employeeDetails: resp})
-        console.log(this.state.employeeDetails);
-    }
-    
+        if (localStorage.getItem("User") == "" && localStorage.getItem("UserType") != "company")
+        {
+            alert("Please login as company before you view all job seeker");
+        }
+        else
+        {
+            axios.get('http://localhost:8081/user/getAllEmployees', 
+            {})
+            .then(function (response) {
+                resp = response.data;
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+            this.setState({employeeDetails: resp})
+            console.log(this.state.employeeDetails);
+        }
     }
 
     handleTextChange(e){
@@ -47,10 +45,6 @@ class ViewJobSeeker extends Component{
           break;
       default:
         }
-    }
-
-    handleSubmit(e){
-
     }
 
   render(){
@@ -75,14 +69,6 @@ class ViewJobSeeker extends Component{
                             <td>{item.username}</td>
                             <td>{item.address}</td>
                             <td>{item.category}</td>
-                            <td>
-                                <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
-                                <label class="form-check-label" for="defaultCheck1">
-                                    Default checkbox
-                                </label>
-                                </div>
-                            </td>
                         </tr>
                     )
                 })}
@@ -90,7 +76,7 @@ class ViewJobSeeker extends Component{
             </table>
 
             <Input placeholder="SearchEmployee" label="Search Employee" s={12} value={this.keywords} onChange={this.handleTextChange.bind(this)}/>
-            <Button onClick={this.handleSubmit.bind(this)}>Search</Button>
+            <Button>Search</Button>
             <Button onClick={this.viewAllEmployees}>View All Employees</Button>
             </Row>
         </div>

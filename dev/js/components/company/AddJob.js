@@ -50,13 +50,13 @@ class AddJob extends Component{
   handleSubmit(e)
   {
     //Validate if user has logged in before using any services
-    if (localStorage.getItem("User") == "")
+    if (localStorage.getItem("User") == "" && localStorage.getItem("UserType") != "company")
     {
         alert("Please login(company) before you add a job post");
     }
     else
     {
-      addJob(this.state)
+        addJob(this.state)
     }
   }
 
