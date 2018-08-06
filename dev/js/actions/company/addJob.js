@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+//Service to call API to create a job POST 
 export function addJob(jobData) {
     axios.post('http://localhost:8081/user/addJob', 
     {

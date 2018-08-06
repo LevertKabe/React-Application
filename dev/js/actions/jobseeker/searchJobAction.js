@@ -1,10 +1,6 @@
+//Axios is HTTP used to access RESTFul API on the Node.js backend
 import axios from 'axios';
-import { JOB_SEARCH } from '../types';
 
-export const searchJob = text => ({
-  type: 'JOB_SEARCH',
-  payload: 'Leevert'
-})
 var listedJobs;
 export function userSearchJob(searchContent) {
 

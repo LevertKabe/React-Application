@@ -1,6 +1,8 @@
 //Component for company to add a job required
 
 import React,{Component} from 'react';
+
+//Axios is HTTP used to access RESTFul API on the Node.js backend
 import axios from 'axios';
 import {Button, Row, Input, Table} from 'react-materialize';
 import { addJob } from '../../actions/company/addJob';

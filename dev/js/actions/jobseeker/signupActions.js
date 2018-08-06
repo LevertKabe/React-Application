@@ -1,3 +1,4 @@
+//Axios is HTTP used to access RESTFul API on the Node.js backend
 import axios from 'axios';
 
 export function userSignupRequest(userData) {

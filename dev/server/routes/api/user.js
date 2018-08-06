@@ -40,7 +40,7 @@ router.get('/searchJob/:keyword', (req, res, next) =>{
 });
 
 
-//=========================================Company APIs================
+//=========================================Company APIs=================================
 
 //API to return all 
 router.get('/getAllCompanies', function(req,res){
@@ -75,7 +75,7 @@ router.get('/searchJobSeeker/:keyword', (req, res, next) =>{
     })
 });
 
-
+//API to add a job post
 router.post('/addJob', (req, res, next) =>{
     const name = req.params.name
     console.log(req.body);

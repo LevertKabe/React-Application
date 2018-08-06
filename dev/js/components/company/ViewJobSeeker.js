@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+
+//Axios is HTTP used to access RESTFul API on the Node.js backend
 import axios from 'axios';
 import {Button, Input, Row} from 'react-materialize';
 import '../../../scss/App.scss';
