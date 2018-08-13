@@ -27,6 +27,7 @@ router.get('/loginCompany/:username', (req, res, next) =>{
     })
 });
 
+
 //API to login a company using company name
 router.get('/searchJobSeeker/:keyword', (req, res, next) =>{
     const keywords = req.params.keyword;

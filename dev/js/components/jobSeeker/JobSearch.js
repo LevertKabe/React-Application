@@ -41,6 +41,7 @@ class JobSearch extends Component{
         {})
         .then(function (response) {
             resp = response.data;
+            console.log(resp);
         })
         .catch(function (error) {
         console.log(error);
@@ -70,9 +71,6 @@ class JobSearch extends Component{
             </Row>
             <Button onClick={this.searchJob}>Search</Button>
             <br/>
-            <Button onClick={this.alertBox}>MyMatches</Button>
-            <br />
-
             <table >
                 <thead style= {{color :"black"}}>
                     <tr>
@@ -86,7 +84,7 @@ class JobSearch extends Component{
 
                 <tbody>
                     {this.state.jobSearchResults.map(function(value, key) {
-                    return (
+                    return (    
                         <tr key = {key} style= {{color :"black"}}  >
                             <td>{value.company_name}</td>
                             <td>{value.job_title}</td>

@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const postgres = require('pg');
 const userRoutes = require('./routes/api/user');
+const companyRoutes = require('./routes/api/company');
 const cons = require('consolidate');
 const dust = require('dustjs-helpers/lib/dust-helpers');
 const pg = require('pg');
@@ -11,6 +12,7 @@ const path = require('path');
 
 const router = express.Router();
 
+app.use('/test', companyRoutes);
 app.use('/test', userRoutes);
 
 //Assign Dust Engine to dust Files
@@ -31,6 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 postgres.Connection
 
+app.use('/user', companyRoutes);
 app.use('/user', userRoutes);
 
 //Handle all requests ERRORS 404 and 500

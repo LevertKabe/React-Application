@@ -94,7 +94,6 @@ class Register extends Component{
                   <Input placeholder="Resume" label="Resume" s={12} value={this.resume} onChange={this.handleTextChange.bind(this)} />
                   <Input placeholder="ExpYears" type="Numbers" s={3} label="No. years of experience" s={4} value={this.numOfYearsExperience} onChange={this.handleTextChange.bind(this)}  />
             </Row>
-
             <input type="file" name= "file" onChange={(e)=> this.uploadFile(e)}/>   
             <Button onClick={this.handleSubmit.bind(this)}>Sign-Up</Button>
             <br/>

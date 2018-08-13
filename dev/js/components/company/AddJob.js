@@ -27,21 +27,29 @@ class AddJob extends Component{
     var value = e.target.placeholder;
     console.log(value);
     switch(value) {
-      case "Jobtitle":
+        case "Jobtitle":
           this.setState({ jobTitle: e.target.value});
-          break;
-      case "ExperienceRequired":
+            break;
+        case "ExperienceRequired":
           this.setState({ experienceRequired: e.target.value});
-          break;
-      case "Pleaseprovidedetailsofjob":
+            break;
+        case "Pleaseprovidedetailsofjob":
           this.setState({ job_description: e.target.value});
-      break;
-      case "Keywords":
+            break;
+        case "Keywords":
           this.setState({ keywords: e.target.value});
-          break;
-      case "Category":
+            break;
+        case "Category":
           this.setState({ category: e.target.value});
-          break;
+            break;
+        case "expYears":
+            if(isNaN(e.target.value)){
+                
+                }
+            else{
+                    this.setState({ numOfYearsExperience: e.target.value});
+                }
+            break;
       default:
     }
   }
@@ -89,9 +97,9 @@ class AddJob extends Component{
                 <thead>
                     <tr>
                     <th data-field="id">Category</th>
-                    <th data-field="name">Applied</th>
-                    <th data-field="price">Experience(Years)</th>
-                    <th data-field="price">Job Title</th>
+                    <th data-field="apply">Applied</th>
+                    <th data-field="expYears">Experience(Years)</th>
+                    <th data-field="jobTitle">Job Title</th>
                     </tr>
                 </thead>
             </Table>
